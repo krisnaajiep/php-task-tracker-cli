@@ -149,7 +149,7 @@ function help(): string
   $help =
     $green . "\nPHP Task Tracker CLI \n" . $reset . PHP_EOL .
     $yellow . 'Usage:' . $reset . PHP_EOL .
-    " command [arguments]\n\n" .
+    "php task-cli.php command [arguments]\n\n" .
     $yellow . "Available commands:" . $reset . PHP_EOL .
     '  add [task_name]                       Add new task
   update [task_id] [new_description]    Update task description
