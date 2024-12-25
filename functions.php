@@ -24,3 +24,36 @@ function add(array $argv): string
 
   return "Task added successfully (ID: $id)\n";
 }
+
+function show(array $argv)
+{
+  global $data;
+
+  if (isset($argv[2])) {
+    $status = ['todo', 'in progress', 'done'];
+
+    if (!in_array($argv[2], $status)) return 'Status not found.';
+
+    $result = "\nFilter (Status: {$argv[2]})\n";
+    $filteredData = [];
+
+    foreach ($data as $task)
+      if ($task['status'] == $argv[2])
+        array_push($filteredData, $task);
+
+    $data = $filteredData;
+  } else {
+    $result = "\nFilter (None)\n";
+  }
+
+  $result .= "\nTasks:\n";
+
+  foreach ($data as $task) {
+    $result .= "\n";
+
+    foreach ($task as $taskKey => $taskValue)
+      $result .= " {$taskKey}: {$taskValue}\n";
+  }
+
+  return $result;
+}

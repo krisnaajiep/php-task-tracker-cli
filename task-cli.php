@@ -14,6 +14,10 @@ switch ($argv[1]) {
     echo add($argv);
     break;
 
+  case 'list':
+    print_r(show($argv));
+    exit;
+
   default:
     echo "Command not found.\n";
     break;
