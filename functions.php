@@ -79,3 +79,24 @@ function update(array $argv): string
 
   return "Id not found.\n";
 }
+
+function mark(array $argv): string
+{
+  if (!isset($argv[2])) return "Task id required\n";
+
+  global $data;
+
+  foreach ($data as $key => $value) {
+    if ($value['id'] == $argv[2]) {
+      $id = $argv[2];
+      $data[$key]['status'] = $argv[1] === 'mark-in-progress' ? 'in progress' : 'done';
+      $data[$key]['updated_at'] = date('Y-m-d H:i:s');
+
+      file_put_contents('tasks.json', json_encode($data, JSON_PRETTY_PRINT));
+
+      return "Task status updated to {$data[$key]['status']} (ID: $id)\n";
+    }
+  }
+
+  return "Task id not found.\n";
+}

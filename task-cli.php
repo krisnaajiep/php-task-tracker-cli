@@ -22,6 +22,10 @@ switch ($argv[1]) {
     echo update($argv);
     break;
 
+  case strpos($argv[1], 'mark') !== false:
+    echo mark($argv);
+    break;
+
   default:
     echo "Command not found.\n";
     break;
