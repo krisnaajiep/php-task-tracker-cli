@@ -18,6 +18,10 @@ switch ($argv[1]) {
     print_r(show($argv));
     exit;
 
+  case 'update':
+    echo update($argv);
+    break;
+
   default:
     echo "Command not found.\n";
     break;
