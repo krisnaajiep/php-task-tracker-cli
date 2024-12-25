@@ -26,6 +26,10 @@ switch ($argv[1]) {
     echo mark($argv);
     break;
 
+  case 'delete':
+    echo delete($argv);
+    break;
+
   default:
     echo "Command not found.\n";
     break;

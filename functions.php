@@ -100,3 +100,24 @@ function mark(array $argv): string
 
   return "Task id not found.\n";
 }
+
+function delete(array $argv): string
+{
+  if (!isset($argv[2])) return "Task id required.\n";
+
+  global $data;
+
+  foreach ($data as $key => $value) {
+    if ($value['id'] == $argv[2]) {
+      $id = $argv[2];
+      unset($data[$key]);
+      $data = array_values($data);
+
+      file_put_contents('tasks.json', json_encode($data, JSON_PRETTY_PRINT));
+
+      return "Task deleted successfully (ID: $id)\n";
+    }
+  }
+
+  return "Task id not found.\n";
+}
