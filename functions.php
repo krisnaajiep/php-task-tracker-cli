@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Adding a new task
+ */
 function add(array $argv): string
 {
   if (!isset($argv[2])) return "Task description required\n";
@@ -25,6 +28,9 @@ function add(array $argv): string
   return "Task added successfully (ID: $id)\n";
 }
 
+/*
+ * Listing all tasks or listing tasks by status
+ */
 function show(array $argv)
 {
   global $data;
@@ -58,6 +64,9 @@ function show(array $argv)
   return $result;
 }
 
+/*
+ * Updating tasks
+ */
 function update(array $argv): string
 {
   if (!isset($argv[2]) || !isset($argv[3]))
@@ -80,6 +89,9 @@ function update(array $argv): string
   return "Id not found.\n";
 }
 
+/*
+ * Marking a task as in progress or done
+ */
 function mark(array $argv): string
 {
   if (!isset($argv[2])) return "Task id required\n";
@@ -101,6 +113,9 @@ function mark(array $argv): string
   return "Task id not found.\n";
 }
 
+/*
+ * Deleting tasks
+ */
 function delete(array $argv): string
 {
   if (!isset($argv[2])) return "Task id required.\n";
@@ -122,6 +137,9 @@ function delete(array $argv): string
   return "Task id not found.\n";
 }
 
+/*
+ * Display guide for using PHP Task Tracker CLI
+ */
 function help(): string
 {
   $yellow = "\033[33m";
