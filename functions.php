@@ -121,3 +121,26 @@ function delete(array $argv): string
 
   return "Task id not found.\n";
 }
+
+function help(): string
+{
+  $yellow = "\033[33m";
+  $green = "\033[32m";
+  $reset = "\033[0m";
+
+  $help =
+    $green . "\nPHP Task Tracker CLI \n" . $reset . PHP_EOL .
+    $yellow . 'Usage:' . $reset . PHP_EOL .
+    "php task-cli.php command [arguments]\n\n" .
+    $yellow . "Available commands:" . $reset . PHP_EOL .
+    '  add [task_name]                       Add new task
+  update [task_id] [new_description]    Update task description
+  delete [task_id]                      Delete a task
+  mark-in-progress [task_id]            Update task status to in progress
+  mark-done [task_id]                   Update task status to done
+  list                                  List all tasks
+  list [status]                         List tasks by status (todo, in progress, or done)
+  ';
+
+  return $help;
+}

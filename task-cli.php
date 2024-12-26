@@ -9,6 +9,11 @@ $data = json_decode(file_get_contents('tasks.json'), true);
 
 require_once 'functions.php';
 
+if (!isset($argv[1]) || $argv[1] === 'help') {
+  echo help();
+  exit;
+}
+
 switch ($argv[1]) {
   case 'add':
     echo add($argv);
