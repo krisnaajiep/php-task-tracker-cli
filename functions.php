@@ -38,7 +38,7 @@ function show(array $argv)
   if (isset($argv[2])) {
     $status = ['todo', 'in progress', 'done'];
 
-    if (!in_array($argv[2], $status)) return 'Status not found.';
+    if (!in_array($argv[2], $status)) return "Status not found\n";
 
     $result = "\nFilter (Status: {$argv[2]})\n";
     $filteredData = [];
@@ -86,7 +86,7 @@ function update(array $argv): string
     }
   }
 
-  return "Id not found.\n";
+  return "Id not found\n";
 }
 
 /*
@@ -110,7 +110,7 @@ function mark(array $argv): string
     }
   }
 
-  return "Task id not found.\n";
+  return "Task id not found\n";
 }
 
 /*
@@ -118,7 +118,7 @@ function mark(array $argv): string
  */
 function delete(array $argv): string
 {
-  if (!isset($argv[2])) return "Task id required.\n";
+  if (!isset($argv[2])) return "Task id required\n";
 
   global $data;
 
@@ -134,7 +134,7 @@ function delete(array $argv): string
     }
   }
 
-  return "Task id not found.\n";
+  return "Task id not found\n";
 }
 
 /*
@@ -149,16 +149,15 @@ function help(): string
   $help =
     $green . "\nPHP Task Tracker CLI \n" . $reset . PHP_EOL .
     $yellow . 'Usage:' . $reset . PHP_EOL .
-    "php task-cli.php command [arguments]\n\n" .
-    $yellow . "Available commands:" . $reset . PHP_EOL .
-    '  add [task_name]                       Add new task
+    "php task-cli.php [arguments]\n\n" .
+    $yellow . "Available arguments:" . $reset . PHP_EOL .
+    "  add [task_name]                       Add new task
   update [task_id] [new_description]    Update task description
   delete [task_id]                      Delete a task
   mark-in-progress [task_id]            Update task status to in progress
   mark-done [task_id]                   Update task status to done
   list                                  List all tasks
-  list [status]                         List tasks by status (todo, in progress, or done)
-  ';
+  list [status]                         List tasks by status (todo, in progress, or done)\n\n";
 
   return $help;
 }
